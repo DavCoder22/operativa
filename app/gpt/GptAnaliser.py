@@ -12,7 +12,7 @@ class GptAnaliser:
         :param resultados: Diccionario con los resultados del problema resuelto.
         :return: Descripción generada por GPT.
         """
-        # Configurar la clave de API de OpenAI
+        # Configurar la clave de API de OpenAI aca se pone lo que te pase
 
         # Construir el prompt para GPT
         prompt = (
