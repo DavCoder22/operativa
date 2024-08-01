@@ -1,5 +1,6 @@
 import pulp
 import re
+from app.gpt.GptAnaliser import GptAnaliser
 
 class LinearProgrammingSolver:
     @staticmethod
@@ -78,7 +79,9 @@ class LinearProgrammingSolver:
             "Variables": {var: var_value.varValue for var, var_value in lp_variables.items()},
             "Coeficientes": coeficientes,
             "Restricciones": restricciones,
-            "Valor_Objetivo": pulp.value(problema.objective)
+            "Valor_Objetivo": pulp.value(problema.objective),
+            "Holguras": {f"holgura_{i+1}": problema.constraints[f"Restricción_{i+1}"].slack for i in range(len(restricciones))},
+            "Artificios": {f"artificial_{i+1}": artificio.varValue for i, artificio in enumerate(artificios)}
         }
         return resultado
 
@@ -103,3 +106,6 @@ if __name__ == "__main__":
     print(f"Coeficientes: {resultado['Coeficientes']}")
     print(f"Restricciones: {resultado['Restricciones']}")
     print(f"Valor de la Función Objetivo: {resultado['Valor_Objetivo']}")
+    print(f"Holguras: {resultado['Holguras']}")
+    print(f"Artificios: {resultado['Artificios']}")
+    print(GptAnaliser.interpretar_sensibilidad(resultado))
