@@ -9,3 +9,7 @@ MarkupSafe==2.1.5
 PuLP==2.9.0
 werkzeug==3.0.3
 zipp==3.19.2
+ortools==9.4.1874
+numpy==1.24.3
+openai==0.27.0
+flask-cors==4.0.0
