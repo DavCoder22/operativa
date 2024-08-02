@@ -63,7 +63,7 @@ def solve_transportation_problem(supply, demand, cost):
             objective.SetCoefficient(x[i, j], cost[i][j])
     objective.SetMinimization()
 
-    solver.SetTimeLimit(20000)  # Set a time limit of 20 seconds
+    solver.SetTimeLimit(20000)
     status = solver.Solve()
 
     if status == pywraplp.Solver.OPTIMAL:
